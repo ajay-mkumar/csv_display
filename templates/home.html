@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>csv</title>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		table.table-ellipsis {
+  table-layout: fixed;
+}
+.table-ellipsis td  {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.table.table-ellipsis thead th {
+		    text-overflow: ellipsis;
+			  white-space: nowrap;
+			  overflow: hidden;
+		}
+.table.table-ellipsis tr:hover .test{
+	white-space: normal;
+	overflow: visible;
+}
+.table.table-ellipsis td:hover .test{
+	white-space: normal;
+	overflow: visible;
+}		
+	</style>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file1"> Upload a file</label>
+        <input type="file" id="file1" name="file">
+        <small>Only accepts CSV files</small>
+        <button type="submit">Upload</button>
+    </form>
+    
+  {% if profiles %}
+<div class="container">    
+<div class="row">
+    <div class="col-md-12" >
+  <table class="table  table-bordered table-ellipsis">
+  	
+    <thead>
+      <tr>
+        <th class="test">Name of the board</th>
+        <th class="test">Open Schooling-All Categories - Number of Students - Appeared - Boys</th>
+        <th class="test">Open Schooling-All Categories - Number of Students - Appeared - girls</th>
+        <th class="test">Open Schooling-All Categories - Number of Students - Appeared - total</th>
+        <th class="test">Open Schooling-All Categories - Number of Students - Passed - Boys</th>
+        <th class="test">Open Schooling-All Categories - Number of Students - Passed - girls</th>
+        <th class="test">Open Schooling-All Categories - Number of Students - Passed - total</th>
+        <th class="test">Open Schooling-Scheduled Caste Students - Number of Students - Appeared - Boys</th>
+        <th class="test">Open Schooling-Scheduled Caste Students - Number of Students - Appeared - girls</th>
+        <th class="test"> Open Schooling-Scheduled Caste Students - Number of Students - Appeared - total</th>
+        <th class="test">Open Schooling-Scheduled Caste Students - Number of Students - Passed - Boys</th>
+        <th class="test">Open Schooling-Scheduled Caste Students - Number of Students - Passed - girls</th>
+        <th class="test">Open Schooling-Scheduled Caste Students - Number of Students - Passed - total</th>
+        <th class="test">Open Schooling-Scheduled tribe Students - Number of Students - Appeared - Boys</th>
+        <th class="test">Open Schooling-Scheduled tribe Students - Number of Students - Appeared - girls</th>
+        <th class="test">Open Schooling-Scheduled tribe Students - Number of Students - Appeared - total</th>
+        <th class="test">Open Schooling-Scheduled tribe Students - Number of Students - Passed - Boys</th>
+        <th class="test">Open Schooling-Scheduled tribe Students - Number of Students - Passed - girls</th>
+        <th class="test">Open Schooling-Scheduled tribe Students - Number of Students - Passed - total</th>
+      </tr>
+
+    </thead>
+ <tbody>
+       
+    <tr>
+      	{% for profile in profiles %}
+
+        <td class="test">{{profile.name_of_the_board}}</td>
+        <td class="test">{{profile.allcategory_boys}}</td>
+        <td class="test">{{profile.allcategory_girls}}</td>
+        <td class="test">{{profile.allcategory_total}}</td>
+        <td class="test">{{profile.allcategory_passed_boys}}</td>
+        <td class="test">{{profile.allcategory_passed_girls}}</td>
+        <td class="test">{{profile.allcategory_passed_total}}</td>
+        <td class="test">{{profile.schedulecaste_boys}}</td>
+        <td class="test">{{profile.schedulecaste_girls}}</td>
+        <td class="test">{{profile.schedulecaste_total}}</td>
+        <td class="test">{{profile.schedulecaste_passed_boys}}</td>
+        <td class="test">{{profile.schedulecaste_passed_girls}}</td>
+        <td class="test">{{profile.schedulecaste_passed_total}}</td>
+        <td class="test">{{profile.scheduletribe_boys}}</td>
+        <td class="test">{{profile.scheduletribe_girls}}</td>
+        <td class="test">{{profile.scheduletribe_total}}</td>
+        <td class="test">{{profile.scheduletribe_passed_boys}}</td>
+        <td class="test">{{profile.scheduletribe_passed_girls}}</td>
+        <td class="test">{{profile.scheduletribe_passed_total}}</td>
+       
+      </tr>
+     {% endfor %}
+    
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{% endif %}
+</body>
+</html>
